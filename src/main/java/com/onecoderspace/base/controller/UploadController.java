@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 import com.onecoderspace.base.util.DateUtils;
 import com.onecoderspace.base.util.RandomUtils;
 
-@Api(value = "上传图片", tags = { "上传图片" })
+@Api(value = "upload image", tags = { "upload image" })
 @RestController
 @RequestMapping("/upload")
 public class UploadController {
@@ -33,20 +33,20 @@ public class UploadController {
 	private static Logger logger = LoggerFactory.getLogger(UploadController.class);
 
 	@Value("${upload.file.path}")
-	private String uploadFilePath;//值类似于/var/www/html/upload  
+	private String uploadFilePath;//Value is similar/var/www/html/upload
 	
 	@Value("${upload.file.path.project.name}")
-	private String projectName; //值类似于dmp
+	private String projectName; //Value is similar to dmp
 
 	/**
-	 * 上传图片
+	 * upload image
 	 * @author yangwk
 	 * @time 2017年7月28日 下午3:42:41
 	 * @param files
 	 * @return
 	 */
-	@ApiOperation(value = "上传图片", notes = "上传图片")
-	@ApiImplicitParam(paramType = "query", name = "files", value = "图片上传", required = true, dataType = "MultipartFile")
+	@ApiOperation(value = "upload image", notes = "upload image")
+	@ApiImplicitParam(paramType = "query", name = "files", value = "upload picture", required = true, dataType = "MultipartFile")
 	@RequestMapping(value = "/img", method = RequestMethod.POST)
 	public List<String> img(@RequestParam("file") MultipartFile[] files) {
 		String savePath = String.format("/%s/img/%s/%s",projectName, RandomUtils.randomNum(2),RandomUtils.randomNum(2));
@@ -72,14 +72,14 @@ public class UploadController {
 	}
 	
 	/**
-	 * 上传图片
+	 * upload image
 	 * @author yangwk
 	 * @time 2017年7月28日 下午3:42:41
 	 * @param files
 	 * @return
 	 */
-	@ApiOperation(value = "上传文件", notes = "上传图片")
-	@ApiImplicitParam(paramType = "query", name = "files", value = "图片上传", required = true, dataType = "MultipartFile")
+	@ApiOperation(value = "upload files", notes = "upload image")
+	@ApiImplicitParam(paramType = "query", name = "files", value = "upload picture", required = true, dataType = "MultipartFile")
 	@RequestMapping(value = "/file", method = RequestMethod.POST)
 	public List<String> file(@RequestParam("file") MultipartFile[] files) {
 		String savePath = String.format("/%s/file/%s/%s",projectName, RandomUtils.randomNum(2),RandomUtils.randomNum(2));
@@ -102,7 +102,7 @@ public class UploadController {
 	}
 	
 	/**
-	 * 获取随机值:10w以内基本可保证唯一，但非绝对不唯一
+	 * Get random values: within 10w, it is guaranteed to be unique, but not absolutely not unique.
 	 * @author yangwk
 	 * @time 2017年8月16日 下午3:18:18
 	 * @return
@@ -113,9 +113,9 @@ public class UploadController {
         if(hashCodeV < 0) {//有可能是负数
             hashCodeV = - hashCodeV;
         }
-        // 0 代表前面补充0     
-        // 4 代表长度为4     
-        // d 代表参数为正数型
+        // 0 Represents the front to add 0
+        // 4 Representative length is 4
+        // d Representative parameter is positive
         return String.format("%s%015d",prefix, hashCodeV);
 	}
 	

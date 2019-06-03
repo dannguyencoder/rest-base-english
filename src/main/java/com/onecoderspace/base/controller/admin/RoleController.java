@@ -24,15 +24,15 @@ import com.onecoderspace.base.service.RolePermissionService;
 import com.onecoderspace.base.service.RoleService;
 import com.onecoderspace.base.util.Return;
 
-@Api(value="角色管理",tags={"运营接口  角色"})
+@Api(value="Role management",tags={"Operational interface role"})
 @RestController
 @RequestMapping("/admin/role")
 public class RoleController {
 
-	@ApiOperation(value="分页查询",notes="分页查询")
+	@ApiOperation(value="Paging query",notes="Paging query")
 	@ApiImplicitParams({
-		@ApiImplicitParam(paramType="query",name="page",value="分页，页码从0开始",required=true,dataType="int"),
-		@ApiImplicitParam(paramType="query",name="size",value="每一页大小",required=true,dataType="int")}
+		@ApiImplicitParam(paramType="query",name="page",value="Pagination, page number starts from 0",required=true,dataType="int"),
+		@ApiImplicitParam(paramType="query",name="size",value="Size per page",required=true,dataType="int")}
 	)
 	@RequiresPermissions(value={"admin:permission:list"})
 	@RequestMapping(value="/list",method=RequestMethod.GET)
@@ -42,7 +42,7 @@ public class RoleController {
 		return rs;
 	}
 
-	@ApiOperation(value="新增&修改",notes="新增&修改")
+	@ApiOperation(value="Add & Modify",notes="Add & Modify")
 	@ApiImplicitParam(paramType="query",name="role",value="角色",dataType="Role")
 	@RequiresPermissions(value={"admin:permission:save"})
 	@RequestMapping(value="/save",method=RequestMethod.GET)
@@ -51,7 +51,7 @@ public class RoleController {
 		return Return.success();
 	}
 
-	@ApiOperation(value="查询",notes="根据id查询")
+	@ApiOperation(value="Inquire",notes="Query based on id")
 	@ApiImplicitParam(paramType="query",name="id",value="角色id",required=true,dataType="int")
 	@RequiresPermissions(value={"admin:permission:get"})
 	@RequestMapping(value="/get",method=RequestMethod.GET)
@@ -60,8 +60,8 @@ public class RoleController {
 		return entity;
 	}
 	
-	@ApiOperation(value="删除",notes="根据id删除")
-	@ApiImplicitParam(paramType="query",name="id",value="角色id",required=true,dataType="int")
+	@ApiOperation(value="delete",notes="Delete by id")
+	@ApiImplicitParam(paramType="query",name="id",value="Role id",required=true,dataType="int")
 	@RequiresPermissions(value={"admin:permission:delete"})
 	@RequestMapping("/delete")
 	public Return delete(int id){
@@ -69,8 +69,8 @@ public class RoleController {
 		return Return.success();
 	}
 
-	@ApiOperation(value = "角色拥有权限", notes = "根据id查询用户拥有的权限")
-	@ApiImplicitParam(paramType="query",name="roleId",value="角色id",required=true,dataType="int")
+	@ApiOperation(value = "Role has permissions", notes = "Query the permissions owned by the user based on the id")
+	@ApiImplicitParam(paramType="query",name="roleId",value="Role id",required=true,dataType="int")
 	@RequiresPermissions(value={"admin:permission:permission:list"})
 	@RequestMapping(value="/permission/list",method=RequestMethod.GET)
 	public List<RolePermission> permissionList(int roleId) {
@@ -78,10 +78,10 @@ public class RoleController {
 		return rolePermissions;
 	}
 
-	@ApiOperation(value = "设置角色拥有的权限", notes = "根据角色id设置权限")
+	@ApiOperation(value = "Set the permissions that the role has", notes = "Set permissions based on role id")
 	@ApiImplicitParams({
 			@ApiImplicitParam(paramType = "query", name = "roleId", value = "角色id", required = true, dataType = "int"),
-			@ApiImplicitParam(paramType = "query", name = "permissionIds", value = "权限ID，多个权限ID用英文逗号隔开", required = true, dataType = "int") })
+			@ApiImplicitParam(paramType = "query", name = "permissionIds", value = "Privilege ID, multiple privilege IDs separated by commas", required = true, dataType = "int") })
 	@RequiresPermissions(value = { "admin:permission:permission:set" })
 	@RequestMapping(value = "/permission/set", method = RequestMethod.POST)
 	public Return permissionSet(int roleId, String permissionIds) {

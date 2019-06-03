@@ -15,10 +15,10 @@ public class FileUtil {
 	private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
 	/**
-	 * 读取文件内的所有行
+	 * Read all the lines in the file
 	 * @author yangwk
-	 * @time 2017年9月12日 上午9:46:33
-	 * @param filePath 文件完整路径
+	 * @time September 12, 2017 9:46:33 AM
+	 * @param filePath file full path
 	 * @return
 	 */
 	public static List<String> getLines(String filePath){
@@ -42,9 +42,9 @@ public class FileUtil {
 	}
 
 	/**
-	 * 写入文件
+	 * Write to file
 	 * @author yangwk
-	 * @time 2017年9月14日 下午1:44:23
+	 * @time September 14, 2017 1:44:23 PM
 	 * @param file
 	 * @param lines
 	 */

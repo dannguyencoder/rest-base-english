@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.onecoderspace.base.component.common.domain.BaseModel;
 
 /**
- * 菜单及操作权限,树形结构
+ * Menu and operation authority, tree structure
  */
 @Entity
 @Table(name = "permission")
@@ -20,24 +20,24 @@ public class  Permission implements BaseModel<Integer>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;//主键
+	private Integer id;//Primary key
 	
 	@Column(name="type",columnDefinition="tinyint default 0")
-	private int type; //权限类型 0菜单 1按钮 2 操作权限
+	private int type; //Permission type 0 menu 1 button 2 operation authority
 	
 	@Column(name="name",length=50)
-	private String name; //权限名称,用来展示
+	private String name; //Permission name to display
 	
 	@Column(name="code",length=50)
-	private String code; //权限的值，校验权限时使用
+	private String code; //The value of the permission, used when verifying permissions
 	
 	private String url;//操作权限的url
 	
 	@Column(name="weight",columnDefinition="int default 10000")
-	private int weight = 10000; //排序值，升序
+	private int weight = 10000; //Sort value, ascending
 	
 	@Column(name="pid",columnDefinition="int default 0")
-	private int pid; //父节点ID
+	private int pid; //Parent node ID
 	
 	@Override
 	public Integer getId() {

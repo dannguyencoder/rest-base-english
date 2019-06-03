@@ -30,19 +30,19 @@ import com.onecoderspace.base.util.LoginSessionHelper;
 import com.onecoderspace.base.util.Return;
 import com.onecoderspace.base.util.SaltMD5Util;
 
-@Api(value = "运营接口  用户", tags = { "运营接口  用户" })
+@Api(value = "Operational interface  user", tags = { "Operational interface  user" })
 @RestController("adminUserController")
 @RequestMapping(value="/admin/user")
 public class AdminUserController {
 
-	@ApiOperation(value = "分页获取用户数据", notes = "根据用户名获取用户姓名获取用户数据")
+	@ApiOperation(value = "Paging to get user data", notes = "Get user name based on user name to get user data")
 	@ApiImplicitParams({
-			@ApiImplicitParam(paramType = "query", name = "type", value = "用户类别  0普通用户 1运营人员", required = true, dataType = "String"),
-			@ApiImplicitParam(paramType = "query", name = "status", value = "账号状态 0已注册未审核  1待审核 2审核通过  -1审核未通过", required = true, dataType = "String"),
-			@ApiImplicitParam(paramType = "query", name = "username", value = "用户名", required = true, dataType = "String"),
-			@ApiImplicitParam(paramType = "query", name = "name", value = "用户姓名", required = true, dataType = "String"),
-			@ApiImplicitParam(paramType = "query", name = "page", value = "分页，页码从0开始", required = true, dataType = "int"),
-			@ApiImplicitParam(paramType = "query", name = "size", value = "每一页大小", required = true, dataType = "int") })
+			@ApiImplicitParam(paramType = "query", name = "type", value = "User Category 0 General User 1 Operator", required = true, dataType = "String"),
+			@ApiImplicitParam(paramType = "query", name = "status", value = "Account Status 0Registered Unreviewed 1 Pending Review 2 Audit Passed -1 Review failed", required = true, dataType = "String"),
+			@ApiImplicitParam(paramType = "query", name = "username", value = "username", required = true, dataType = "String"),
+			@ApiImplicitParam(paramType = "query", name = "name", value = "username", required = true, dataType = "String"),
+			@ApiImplicitParam(paramType = "query", name = "page", value = "Pagination, page number starts from 0", required = true, dataType = "int"),
+			@ApiImplicitParam(paramType = "query", name = "size", value = "Size per page", required = true, dataType = "int") })
 	@RequiresPermissions(value = { "admin:user:list" })
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public Page<User> list(String type, String status, String username, String name,
@@ -53,8 +53,8 @@ public class AdminUserController {
 		params.put("username", username);
 		params.put("name", name);
 		Page<User> rs = this.userService.listByPage(params,new PageRequest(page, size, new Sort(Direction.DESC, "updateTime")));
-		
-		/*//或者使用service内的公共方法也可以
+
+		/*//Or use the public method inside the service.
 		Map<String, Object> params2 = Maps.newHashMap();
 		params.put("type", type);
 		params.put("status", status);
@@ -69,7 +69,7 @@ public class AdminUserController {
 		return rs;
 	}
 
-	@ApiOperation(value = "用户审核时的全部信息", notes = "用户审核时的全部信息：用户信息、公司信息、公司资质信息,根据id查询用户")
+	@ApiOperation(value = "All information when the user is audited", notes = "All information when the user is audited: user information, company information, company qualification information, query user based on id")
 	@ApiImplicitParam(paramType = "query", name = "id", value = "用户id", required = true, dataType = "int")
 	@RequiresPermissions(value = { "admin:user:audit-info" })
 	@RequestMapping(value = "/audit-info", method = RequestMethod.GET)
@@ -82,26 +82,26 @@ public class AdminUserController {
 		return map;
 	}
 
-	@ApiOperation(value = "审核用户账号", notes = "审核用户账号")
+	@ApiOperation(value = "Review user account", notes = "Review user account")
 	@ApiImplicitParams({
 			@ApiImplicitParam(paramType = "query", name = "id", value = "用户id", required = true, dataType = "int"),
-			@ApiImplicitParam(paramType = "query", name = "value", value = "value 0未通过 1通过", required = true, dataType = "int"),
-			@ApiImplicitParam(paramType = "query", name = "msg", value = "不通过原因", required = true, dataType = "String") })
+			@ApiImplicitParam(paramType = "query", name = "value", value = "Value 0 failed 1 passed", required = true, dataType = "int"),
+			@ApiImplicitParam(paramType = "query", name = "msg", value = "Failure reason", required = true, dataType = "String") })
 	@RequiresPermissions(value = { "admin:user:audit" })
 	@RequestMapping(value = "/audit", method = RequestMethod.GET)
 	public Return audit(int id, int value, String msg) {
 		User entity = userService.findById(id);
 		if (entity == null) {
-			return Return.fail("用户已不存在");
+			return Return.fail("User no longer exists");
 		}
 		if (entity.getStatus() != User.STATUS_WAIT_AUDIT) {
-			return Return.fail("用户不是待审核状态");
+			return Return.fail("User is not pending review");
 		}
 		return userService.doAudit(entity, value, msg);
 	}
 
-	@ApiOperation(value = "保存用户信息", notes = "保存用户信息")
-	@ApiImplicitParam(paramType = "query", name = "user", value = "用户实体", required = true, dataType = "user")
+	@ApiOperation(value = "Save user information", notes = "Save user information")
+	@ApiImplicitParam(paramType = "query", name = "user", value = "User entity", required = true, dataType = "user")
 	@RequiresPermissions(value = { "admin:user:save" })
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public Return save(User user) {
@@ -109,7 +109,7 @@ public class AdminUserController {
 		if (user.getId() != null && user.getId() != 0) {
 			User old = userService.findById(user.getId());
 			if (old == null) {
-				return Return.fail("信息已不存在");
+				return Return.fail("Information no longer exists");
 			}
 			user.setUsername(old.getUsername());
 			user.setPwd(old.getPwd());
@@ -138,8 +138,8 @@ public class AdminUserController {
 		return re;
 	}
 
-	@ApiOperation(value = "标记删除", notes = "标记删除")
-	@ApiImplicitParam(paramType = "query", name = "id", value = "用户id",dataType = "int")
+	@ApiOperation(value = "Tag deletion", notes = "Tag deletion")
+	@ApiImplicitParam(paramType = "query", name = "id", value = "User id",dataType = "int")
 	@RequiresPermissions(value = { "admin:user:delete" })
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public Return delete(int id) {
@@ -149,8 +149,8 @@ public class AdminUserController {
 		return Return.success();
 	}
 
-	@ApiOperation(value = "用户拥有的角色", notes = " 用户拥有的角色")
-	@ApiImplicitParam(paramType = "query", name = "uid", value = "用户uid", required = true, dataType = "int")
+	@ApiOperation(value = "User-owned role", notes = " User-owned role")
+	@ApiImplicitParam(paramType = "query", name = "uid", value = "User uid", required = true, dataType = "int")
 	@RequiresPermissions(value = { "admin:user:role:list" })
 	@RequestMapping(value="/role/list",method=RequestMethod.GET)
 	public List<UserRole> roleList(int uid) {
@@ -158,7 +158,7 @@ public class AdminUserController {
 		return userRoles;
 	}
 
-	@ApiOperation(value = "设置用户角色", notes = "设置用户角色")
+	@ApiOperation(value = "Set user role", notes = "Set user role")
 	@ApiImplicitParams({
 		@ApiImplicitParam(paramType = "query", name = "uid", value = "用户uid", required = true, dataType = "int"),
 		@ApiImplicitParam(paramType = "query", name = "roleids", value = "角色id", required = true, dataType = "String")

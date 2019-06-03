@@ -34,7 +34,7 @@ import com.onecoderspace.base.domain.User;
 import com.onecoderspace.base.service.UserService;
 import com.onecoderspace.base.util.SaltMD5Util;
 
-@Api(value="用户登录",tags={"用户登录"})
+@Api(value="User login",tags={"User login"})
 @RestController
 public class LoginController {
 	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -43,9 +43,9 @@ public class LoginController {
 	private String serverSessionTimeout;
 
 	/**
-	 * 用户登录接口 通过用户名和密码进行登录
+	 * User login interface Log in with username and password
 	 */
-	@ApiOperation(value = "用户登录接口 通过用户名和密码进行登录", notes = "用户登录接口 通过用户名和密码进行登录")
+	@ApiOperation(value = "User login interface Log in with username and password", notes = "User login interface Log in with username and password")
 	@ApiImplicitParams({
 			@ApiImplicitParam(paramType = "query", name = "username", value = "用户名", required = true, dataType = "String"),
 			@ApiImplicitParam(paramType = "query", name = "pwd", value = "密码", required = true, dataType = "String"),
@@ -58,12 +58,12 @@ public class LoginController {
 		User user = userService.findByUsername(username);
 		if (user == null) {
 			map.put("code", "-1");
-			map.put("description", "账号不存在");
+			map.put("description", "Account does not exist");
 			return map;
 		}
 		if (user.getEnable() == 0) { //账号被禁用
 			map.put("code", "-1");
-			map.put("description", "账号已被禁用");
+			map.put("description", "Account has been disabled");
 			return map;
 		}
 
@@ -75,7 +75,7 @@ public class LoginController {
 
 		loginValid(map, currentUser, token);
 
-		// 验证是否登录成功
+		// Verify that the login is successful
 		if (currentUser.isAuthenticated()) {
 			map.put("code","1");
 			map.put("description", "ok");
@@ -130,21 +130,21 @@ public class LoginController {
 		}
 
 		try {
-			// 在调用了login方法后,SecurityManager会收到AuthenticationToken,并将其发送给已配置的Realm执行必须的认证检查
-			// 每个Realm都能在必要时对提交的AuthenticationTokens作出反应
-			// 所以这一步在调用login(token)方法时,它会走到MyRealm.doGetAuthenticationInfo()方法中,具体验证方式详见此方法
+			// After calling the login method, the SecurityManager will receive the AuthenticationToken and send it to the configured Realm to perform the necessary authentication checks.
+			// Each Realm can react to the submitted AuthenticationTokens when necessary
+			// So when this step calls the login(token) method, it will go to the MyRealm.doGetAuthenticationInfo() method. See the method for the specific verification method.
 			currentUser.login(token);
 			return true;
 		} catch (UnknownAccountException | IncorrectCredentialsException ex) {
-			map.put("description", "账号或密码错误");
+			map.put("description", "Incorrect username or password");
 		} catch (LockedAccountException lae) {
-			map.put("description","账户已锁定");
+			map.put("description","Account locked");
 		} catch (ExcessiveAttemptsException eae) {
-			map.put("description", "错误次数过多");
+			map.put("description", "Too many errors");
 		} catch (AuthenticationException ae) {
-			// 通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景
-			map.put("description", "登录失败");
-			logger.warn(String.format("对用户[%s]进行登录验证..验证未通过", username),ae);
+			// By handling Shiro's runtime AuthenticationException, you can control the situation when the user fails to log in or the password is wrong.
+			map.put("description", "Login failed");
+			logger.warn(String.format("Login verification for user [%s]: verification failed", username),ae);
 		}
 		return false;
 	}

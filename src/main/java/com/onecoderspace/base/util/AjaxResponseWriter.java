@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.common.collect.Maps;
 
 /**
- * 当前端通过ajax请求时，直接将返回结果写回前端
+ * When the current end requests through ajax, it directly writes the returned result back to the front end.
  * @author yangwk
  */
 public class AjaxResponseWriter {
 
 	/**
-	 * 写回数据到前端
+	 * Write back data to the front end
 	 * @param request
 	 * @param response
-	 * @param status {@link ServiceStatusEnum} 
-	 * @param message 返回的描述信息
+	 * @param status {@link ServiceStatusEnum}
+	 * @param message returned description
 	 * @throws IOException
 	 */
 	public static void write(HttpServletRequest request,HttpServletResponse response,ServiceStatusEnum status,String message) throws IOException{

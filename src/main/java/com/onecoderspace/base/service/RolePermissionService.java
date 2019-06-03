@@ -8,7 +8,7 @@ import com.onecoderspace.base.domain.Permission;
 import com.onecoderspace.base.domain.RolePermission;
 
 /**
- *角色权限关联表
+ *Role permission association table
  */
 public interface RolePermissionService extends BaseService<RolePermission, Integer>{
 

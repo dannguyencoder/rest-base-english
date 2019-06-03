@@ -12,61 +12,61 @@ import com.onecoderspace.base.component.common.domain.BaseModel;
 public interface BaseService<T extends BaseModel<ID>, ID extends Serializable> {
 
 	/**
-	 * 新增或更新
+	 * Add or update
 	 */
 	T save(T t);
-	
+
 	/**
-	 * 新增或更新
-	 * 注意数量不要太大，特别是数据迁移时不要使用该方法
+	 * Add or update
+	 * Note that the number is not too large, especially when using data migration.
 	 */
 	Iterable<T> save(Iterable<T> entities);
-	
+
 	/**
-	 * 根据ID删除
+	 * Delete by ID
 	 */
 	void del(ID id);
-	
+
 	/**
-	 * 根据实体删除
+	 * Delete by entity
 	 */
 	void del(T t);
-	
+
 	/**
-	 * 根据ID查找对象
+	 * Find objects by ID
 	 */
 	T findById(ID id);
-	
+
 	List<T> findAll();
-	
+
 	/**
-	 * 分页排序获取数据
-	 * 禁止使用该接口进行count操作
+	 * Paging sorting to get data
+	 * Do not use this interface for count operations.
 	 * Pageable pageable = new PageRequest(0, 10, new Sort(Sort.Direction.DESC,"id"));
 	 * @param pageable
 	 * @return
 	 */
 	Page<T> findAll(Pageable pageable);
-	
+
 	/**
-	 * 多条件查询
-	 * 注：多个条件间是and关系 & 参数是属性对应的类型 使用时注意避免结果集过大
+	 * Multiple conditional query
+	 * Note: The relationship between multiple conditions is and relationship & parameter is the type corresponding to the attribute. Please avoid using the result set too large.
 	 * @author yangwk
 	 * @time 2017年8月1日 下午3:50:46
-	 * @param params {"username:like":"test"} 键的格式为字段名:过滤方式,过滤方式见{@code QueryTypeEnum}
+	 * @param params {"username:like":"test"} The format of the key is the field name: filtering method, see {@code QueryTypeEnum} for filtering.
 	 * @return
 	 */
 	List<T> list(Map<String, Object> params);
-	
+
 	/**
-	 * 分页多条件查询
-	 * 注：多个条件间是and关系 & 参数是属性对应的类型
+	 * Paging multi-condition query
+	 * Note: Multiple conditions are between and relationship & parameter is the type corresponding to the attribute
 	 * @author yangwk
 	 * @time 2017年8月1日 下午3:50:46
-	 * @param params {"username:like":"test"} 键的格式为字段名:过滤方式,过滤方式见{@code QueryTypeEnum}
-	 * @param pageable 分页信息 new PageRequest(page, size,new Sort(Direction.DESC, "updateTime"))
+	 * @param params {"username:like":"test"} The format of the key is the field name: filtering method, see {@code QueryTypeEnum} for filtering.
+	 * @param pageable Paging information new PageRequest(page, size, new Sort(Direction.DESC, "updateTime"))
 	 * @return
 	 */
 	Page<T> list(Map<String, Object> params,Pageable pageable);
-	
+
 }

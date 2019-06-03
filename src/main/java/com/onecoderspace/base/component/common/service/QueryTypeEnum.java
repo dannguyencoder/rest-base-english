@@ -2,7 +2,7 @@ package com.onecoderspace.base.component.common.service;
 
 import io.swagger.annotations.ApiModel;
 
-@ApiModel(value="查询条件支持的过滤方式")
+@ApiModel(value="Filtering method supported by query conditions")
 public enum QueryTypeEnum {
 	like,
 	equal,

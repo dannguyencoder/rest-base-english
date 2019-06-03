@@ -27,8 +27,8 @@ public class Swagger2 {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-			.title("基础项目接口API")
-			.description("基础项目接口API")
+			.title("Basic project interface API")
+			.description("Basic project interface API")
 			.version("1.0").build();
 	}
 

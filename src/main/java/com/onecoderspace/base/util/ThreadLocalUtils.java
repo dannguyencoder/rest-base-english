@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 注意在线程内部使用完后手动调用remove方法，避免某些使用线程池的地方出现内存泄漏|数据错误等诡异问题
+ * Note that the remove method is called manually after the internal use of the thread to avoid memory leaks in some places where the thread pool is used.
  * @author Administrator
  *
  */

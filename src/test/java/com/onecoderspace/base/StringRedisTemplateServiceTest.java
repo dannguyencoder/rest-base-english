@@ -23,25 +23,25 @@ public class StringRedisTemplateServiceTest {
 
 	@Test
 	public void test(){
-		//设置缓存，建议每个键都设置过期时间
+		//Set the cache, it is recommended to set the expiration time for each key
 		redisTemplate.opsForValue().set("test", "test", 10, TimeUnit.SECONDS);
 		Assert.assertEquals(redisTemplate.opsForValue().get("test"), "test");
 		
 		redisTemplate.delete("test");//删除某个键
 		
-		//操作set
+		//Operation set
 		redisTemplate.opsForSet().add("testSet", "1");
 		redisTemplate.opsForSet().add("testSet", "2");
 		redisTemplate.opsForSet().add("testSet", "3");
-		Set<String> members = redisTemplate.opsForSet().members("testSet");//获取set内的所有值
+		Set<String> members = redisTemplate.opsForSet().members("testSet");//Get all the values in the set
 		for (String string : members) {
 			System.err.println(string);
 		}
-		redisTemplate.opsForSet().remove("testSet", "1","2");//移除set内的多个对象
+		redisTemplate.opsForSet().remove("testSet", "1","2");//Remove multiple objects from the set
 		
 		System.err.println("-----------");
 		
-		//操作list
+		//Operation list
 		redisTemplate.opsForList().rightPush("testList", "1");
 		redisTemplate.opsForList().rightPush("testList", "2");
 		redisTemplate.opsForList().rightPush("testList", "3");

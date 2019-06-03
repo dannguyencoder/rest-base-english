@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * Token生成器
+ * Token generator
  */
 public class TokenUtils {
 	
@@ -14,10 +14,10 @@ public class TokenUtils {
 	public static String defaultNum="123456789";
 
 	/**
-	 * 使用UUID生成指定长度的Token
+	 * Use UUID to generate Token of specified length
 	 * 
 	 * @param length
-	 *            长度:8位字符串
+	 *            Length: 8-bit string
 	 * @return
 	 */
 	public static String generateToken() {
@@ -25,7 +25,7 @@ public class TokenUtils {
 	}
 	
 	/**
-	 * 默认：随机一个指定长度的字符串符串
+	 * Default: Random string of a specified length
 	 * @return
 	 */
 	public static String generateToken(int length){
@@ -40,7 +40,7 @@ public class TokenUtils {
 	}
 	
 	/**
-	 * 默认：随机一个指定长度的字符串符串
+	 * Default: Random string of a specified length
 	 * @return
 	 */
 	public static String generateToken(String str,int length){

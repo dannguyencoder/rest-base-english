@@ -3,17 +3,17 @@ package com.onecoderspace.base.util.lock;
 import com.onecoderspace.base.util.lock.impl.JedisLock;
 
 /**
- * Title:分布式锁获取帮助类
- * @author yangwenkui
- * @version v1.0
- */
+  * Title: Distributed lock acquisition help class
+  * @author yangwenkui
+  * @version v1.0
+  */
 public class DistributedLockUtil{
 
 	/**
-	 * 获取分布式锁
-	 * 默认获取锁10s超时，锁过期时间60s
+	 * Get distributed locks
+	 * The default acquisition lock 10s timeout, lock expiration time 60s
 	 * @author yangwenkui
-	 * @time 2016年5月6日 下午1:30:46
+	 * @time May 6, 2016 1:30:46 PM
 	 * @return
 	 */
 	public static DistributedLock getDistributedLock(String lockKey){
@@ -21,9 +21,9 @@ public class DistributedLockUtil{
 		JedisLock lock = new JedisLock(lockKey);
 		return lock;
 	}
-	
+
 	/**
-	 * 正式环境、测试环境共用一个redis时，避免key相同造成影响
+	 * When the formal environment and test environment share a redis, avoid the same key impact
 	 * @author yangwenkui
 	 * @param lockKey
 	 * @return
@@ -33,12 +33,12 @@ public class DistributedLockUtil{
 	}
 
 	/**
-	 * 获取分布式锁
-	 * 默认获取锁10s超时，锁过期时间60s
+	 * Get distributed locks
+	 * The default acquisition lock 10s timeout, lock expiration time 60s
 	 * @author yangwenkui
-	 * @time 2016年5月6日 下午1:38:32
+	 * @time May 6, 2016 1:38:32 PM
 	 * @param lockKey
-	 * @param timeoutMsecs 指定获取锁超时时间
+	 * @param timeoutMsecs specifies the lock timeout time
 	 * @return
 	 */
 	public static DistributedLock getDistributedLock(String lockKey,int timeoutMsecs){
@@ -46,15 +46,15 @@ public class DistributedLockUtil{
 		JedisLock lock = new JedisLock(lockKey,timeoutMsecs);
 		return lock;
 	}
-	
+
 	/**
-	 * 获取分布式锁
-	 * 默认获取锁10s超时，锁过期时间60s
+	 * Get distributed locks
+	 * The default acquisition lock 10s timeout, lock expiration time 60s
 	 * @author yangwenkui
-	 * @time 2016年5月6日 下午1:40:04
-	 * @param lockKey 锁的key
-	 * @param timeoutMsecs 指定获取锁超时时间
-	 * @param expireMsecs 指定锁过期时间
+	 * @time May 6, 2016 1:40:04 PM
+	 * @param lockKey lock key
+	 * @param timeoutMsecs specifies the lock timeout time
+	 * @param expireMsecs specifies the lock expiration time
 	 * @return
 	 */
 	public static DistributedLock getDistributedLock(String lockKey,int timeoutMsecs,int expireMsecs){

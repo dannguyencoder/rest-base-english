@@ -71,7 +71,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 		 * 当放到缓存中时，这样的话，doGetAuthorizationInfo就只会执行一次了，
 		 * 缓存过期之后会再次执行。
 		 */
-        logger.debug("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
+        logger.debug("Rights Profile-->MyShiroRealm.doGetAuthorizationInfo()");
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         authorizationInfo.addRole("ACTUATOR");

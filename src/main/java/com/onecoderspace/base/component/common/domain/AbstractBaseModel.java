@@ -9,7 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
- * 提取了部分公共字段，可以避免多个实体重复设置这些属性
+ * Extract some public fields to avoid multiple entities repeatedly setting these properties
  * @author yangwk
  * @version v1.0
  * @time 2017年8月9日 下午1:50:22

@@ -8,11 +8,11 @@ import com.onecoderspace.base.util.SpringContextUtil;
 import com.onecoderspace.base.util.lock.DistributedLock;
 
 /**
- * Title:基于redis的分布式锁实现--互斥锁
- * @author yangwenkui
- * @version v1.0
- * @time 2016年5月6日 下午2:19:28
- */
+  * Title: Distributed lock implementation based on redis--mutual lock
+  * @author yangwenkui
+  * @version v1.0
+  * @time May 6, 2016 2:19:28 PM
+  */
 public class JedisLock implements DistributedLock{
 	
 	private static Logger logger = LoggerFactory.getLogger(JedisLock.class);
@@ -20,37 +20,37 @@ public class JedisLock implements DistributedLock{
 	private static StringRedisTemplate redisTemplate;
 
     /**
-     * 分布式锁的键值
+     * Distributed lock key
      */
-    String lockKey; //锁的键值
-    int expireMsecs  = 10 * 1000; //锁超时，防止线程在入锁以后，无限的执行等待
-    int     timeoutMsecs = 10 * 1000; //锁等待，防止线程饥饿
-    boolean locked = false; //是否已经获取锁
+    String lockKey; //Key value of the lock
+    int expireMsecs  = 10 * 1000; //Lock timeout, preventing the thread from waiting indefinitely after entering the lock
+    int     timeoutMsecs = 10 * 1000; //Lock waiting to prevent thread starvation
+    boolean locked = false; //Have you acquired the lock?
 
-    /**
-     * 获取指定键值的锁
-     * @param lockKey 锁的键值
-     */
+	/**
+      * Get the lock of the specified key value
+      * @param lockKey key value of the lock
+      */
     public JedisLock(String lockKey) {
         this.lockKey = lockKey;
     }
 
-    /**
-     * 获取指定键值的锁,同时设置获取锁超时时间
-     * @param lockKey 锁的键值
-     * @param timeoutMsecs 获取锁超时时间
-     */
+	/**
+      * Get the lock of the specified key value, and set the lock timeout time
+      * @param lockKey key value of the lock
+      * @param timeoutMsecs Get lock timeout
+      */
     public JedisLock(String lockKey, int timeoutMsecs) {
         this.lockKey = lockKey;
         this.timeoutMsecs = timeoutMsecs;
     }
 
     /**
-     * 获取指定键值的锁,同时设置获取锁超时时间和锁过期时间
-     * @param lockKey 锁的键值
-     * @param timeoutMsecs 获取锁超时时间
-     * @param expireMsecs 锁失效时间
-     */
+	 * Get the lock of the specified key value, and set the lock timeout and lock expiration time
+      * @param lockKey key value of the lock
+      * @param timeoutMsecs Get lock timeout
+      * @param expireMsecs lock expiration time
+      */
     public JedisLock(String lockKey, int timeoutMsecs, int expireMsecs) {
         this.lockKey = lockKey;
         this.timeoutMsecs = timeoutMsecs;
@@ -75,7 +75,7 @@ public class JedisLock implements DistributedLock{
         try {
 			while (timeout >= 0) {
 			    long expires = System.currentTimeMillis() + expireMsecs + 1;
-			    String expiresStr = String.valueOf(expires); //锁到期时间
+			    String expiresStr = String.valueOf(expires); //Lock expiration time
 
 			    if (redisTemplate.opsForValue().setIfAbsent(lockKey, expiresStr)) {
 			        // lock acquired
@@ -83,16 +83,16 @@ public class JedisLock implements DistributedLock{
 			        return true;
 			    }
 
-			    String currentValueStr = redisTemplate.opsForValue().get(lockKey); //redis里的时间
+			    String currentValueStr = redisTemplate.opsForValue().get(lockKey); //Time in redis
 			    if (currentValueStr != null && Long.parseLong(currentValueStr) < System.currentTimeMillis()) {
-			        //判断是否为空，不为空的情况下，如果被其他线程设置了值，则第二个条件判断是过不去的
+			        //If the judgment is empty, if it is not empty, if the value is set by another thread, the second condition is judged to be too late.
 			        // lock is expired
 
 			        String oldValueStr = redisTemplate.opsForValue().getAndSet(lockKey, expiresStr);
-			        //获取上一个锁到期时间，并设置现在的锁到期时间，
-			        //只有一个线程才能获取上一个线上的设置时间，因为jedis.getSet是同步的
+			        //Get the last lock expiration time and set the current lock expiration time,
+			        //Only one thread can get the setup time on the previous line, because jedis.getSet is synchronous
 			        if (oldValueStr != null && oldValueStr.equals(currentValueStr)) {
-			            //如过这个时候，多个线程恰好都到了这里，但是只有一个线程的设置值和当前值相同，他才有权利获取锁
+			            //At this time, multiple threads happen to be here, but only one thread has the same set value as the current value, so he has the right to acquire the lock.
 			            // lock acquired
 			            locked = true;
 			            return true;
@@ -108,7 +108,7 @@ public class JedisLock implements DistributedLock{
     }
 
     /**
-     * 释放锁
+     * Release lock
      */
     public synchronized void release() {
     		if(redisTemplate == null){
@@ -116,8 +116,8 @@ public class JedisLock implements DistributedLock{
  		}
 		try {
 		    if (locked) {
-		    		String currentValueStr = redisTemplate.opsForValue().get(lockKey); //redis里的时间
-		    		//校验是否超过有效期，如果不在有效期内，那说明当前锁已经失效，不能进行删除锁操作
+		    		String currentValueStr = redisTemplate.opsForValue().get(lockKey); //Time in redis
+		    		//Whether the verification exceeds the validity period. If it is not within the validity period, it means that the current lock has expired and the lock operation cannot be performed.
 			    if (currentValueStr != null && Long.parseLong(currentValueStr) > System.currentTimeMillis()) {
 			    		redisTemplate.delete(lockKey);
 					locked = false;

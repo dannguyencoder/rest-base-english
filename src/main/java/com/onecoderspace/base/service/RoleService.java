@@ -10,7 +10,7 @@ import com.onecoderspace.base.domain.Role;
 import com.onecoderspace.base.util.Return;
 
 /**
- *角色
+ *Character
  */
 public interface RoleService extends BaseService<Role, Integer>{
 

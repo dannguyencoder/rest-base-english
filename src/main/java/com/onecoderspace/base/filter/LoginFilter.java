@@ -28,7 +28,7 @@ public class LoginFilter implements Filter {
 		if (!currentUser.isAuthenticated()) {
 			HttpServletRequest req = (HttpServletRequest) request;
 			HttpServletResponse res = (HttpServletResponse) response;
-			AjaxResponseWriter.write(req, res, ServiceStatusEnum.UNLOGIN, "请登录");
+			AjaxResponseWriter.write(req, res, ServiceStatusEnum.UNLOGIN, "please sign in");
 			return;
 		}
 		chain.doFilter(request, response);

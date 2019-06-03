@@ -17,12 +17,12 @@ import com.onecoderspace.base.service.PermissionService;
 import com.onecoderspace.base.util.Return;
 
 
-@Api(value = "运营接口  权限", tags = { "运营接口  权限" })
+@Api(value = "Operation interface", tags = { "Operation interface" })
 @RestController
 @RequestMapping("/admin/permission")
 public class PermissionController {
 	
-	@ApiOperation(value = "获取所有权限", notes = "获取所有权限")
+	@ApiOperation(value = "Get all permissions", notes = "Get all permissions")
 	@RequiresPermissions(value={"admin:permission:list"})
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public Iterable<Permission> list(){
@@ -30,8 +30,8 @@ public class PermissionController {
 		return list;
 	}	
 	
-	@ApiOperation(value = "新增/修改  权限", notes = "保存  新增/修改的  权限")
-	@ApiImplicitParam(paramType = "query", name = "permission", value = "菜单操作权限实体", required = true, dataType = "Permission")
+	@ApiOperation(value = "Add/Modify Permissions", notes = "Save New/Modified Permissions")
+	@ApiImplicitParam(paramType = "query", name = "permission", value = "Menu operation authority entity", required = true, dataType = "Permission")
 	@RequiresPermissions(value={"admin:permission:save"})
 	@RequestMapping(value="/save",method=RequestMethod.GET)
 	public Return save(Permission permission){
@@ -40,8 +40,8 @@ public class PermissionController {
 	}
 	
 	
-	@ApiOperation(value = "删除  权限", notes = "根据id删除权限")
-	@ApiImplicitParam(paramType = "query", name = "id", value = "权限id", required = true, dataType = "int")
+	@ApiOperation(value = "Delete permission", notes = "Delete permissions based on id")
+	@ApiImplicitParam(paramType = "query", name = "id", value = "Permission id", required = true, dataType = "int")
 	@RequiresPermissions(value={"admin:permission:delete"})
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public Return delete(int id){
@@ -49,7 +49,7 @@ public class PermissionController {
 		return Return.success();
 	}
 
-	@ApiOperation(value = "获取权限", notes = "根据id查询权限")
+	@ApiOperation(value = "Get permission", notes = "Query permissions based on id")
 	@ApiImplicitParam(paramType = "query", name = "id", value = "权限id", required = true, dataType = "int")
 	@RequiresPermissions(value={"admin:permission:get"})
 	@RequestMapping(value="/get",method=RequestMethod.GET)

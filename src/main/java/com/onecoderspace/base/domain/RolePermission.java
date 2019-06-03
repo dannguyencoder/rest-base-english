@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.onecoderspace.base.component.common.domain.BaseModel;
 
 /**
- * 角色权限关联表
+ * Role permission association table
  */
 @Entity
 @Table(name = "role_permission")
@@ -20,13 +20,13 @@ public class RolePermission implements BaseModel<Integer>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;//主键
+	private Integer id;//Primary key
 	
 	@Column(name="role_id",columnDefinition="int default 0")
-	private int roleId; //角色ID
+	private int roleId; //Role ID
 	
 	@Column(name="permission_id",columnDefinition="int default 0")
-	private int permissionId; //权限ID
+	private int permissionId; //Privilege ID
 	
 	@Override
 	public Integer getId() {

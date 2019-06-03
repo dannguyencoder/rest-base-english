@@ -107,24 +107,24 @@ public class HttpServletHelper {
         return  Joiner.on("?").skipNulls().join(request.getRequestURL().toString(), request.getQueryString()); // eg. http://xxx:xx/iapp/study/me.do?a=b
         
     }
-    
-    
+
+
     /**
-     * 获取跟路径
-     * @param request
-     * @return 
-     */
+      * Get the path
+      * @param request
+      * @return
+      */
     public static String getRootPath(HttpServletRequest request){
     	String rootPath = String.format("%s:%s%s", request.getServerName(),request.getServerPort(),request.getContextPath());
     	return rootPath;
     }
 
     /**
-     * 获取绝对路径
-     * @param request
-     * @param relativePath
-     * @return
-     */
+      * Get absolute path
+      * @param request
+      * @param relativePath
+      * @return
+      */
 	public static String getAbsolutePath(HttpServletRequest request,
 			String relativePath) {
 		return String.format("http://%s/%s", getRootPath(request),relativePath);

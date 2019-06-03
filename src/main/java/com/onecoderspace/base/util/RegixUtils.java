@@ -6,17 +6,17 @@ import java.util.regex.Pattern;
 public class RegixUtils {
 
 	/**
-	 * 获取正则匹配的值
+	 * Get the value of the regular match
 	 * @author yangwk
 	 * @time 2017年9月13日 下午2:39:57
-	 * @param content 字符串
-	 * @param regix 正则规则
-	 * @param num 匹配的group下标
+	 * @param content String
+	 * @param regix Regular rule
+	 * @param num Matching group subscript
 	 * @return
 	 */
 	public static String match(String content,String regix,int num){
 		Pattern r = Pattern.compile(regix);
-	    // 现在创建 matcher 对象
+	    // Now create a matcher object
 		Matcher m = r.matcher(content);
 		if (m.find()) {
 			return m.group(num);

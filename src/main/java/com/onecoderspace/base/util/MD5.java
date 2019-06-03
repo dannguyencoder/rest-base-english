@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 
 
-/**MD5加密算法
+/**MD5 encryption algorithm
  * @author songsp 2010-1-13
  *
  */
@@ -14,15 +14,15 @@ public class MD5 {
 				'a', 'b', 'c', 'd', 'e', 'f' };
 		try {
 			byte[] strTemp = s.getBytes();
-			MessageDigest mdTemp = MessageDigest.getInstance("MD5");//返回实现MD5摘要算法的 MessageDigest 对象
-			mdTemp.update(strTemp);//使用指定的字节更新摘要
-			byte[] md = mdTemp.digest();// 得到md5算法结果 //通过执行诸如填充之类的最终操作完成哈希计算
+			MessageDigest mdTemp = MessageDigest.getInstance("MD5");//Returns a MessageDigest object that implements the MD5 digest algorithm
+			mdTemp.update(strTemp);//Update the summary with the specified bytes
+			byte[] md = mdTemp.digest();// Get the result of the md5 algorithm // Complete the hash calculation by performing the final operation such as padding
 			int j = md.length;
 			char str[] = new char[j * 2];
 			int k = 0;
 			for (int i = 0; i < j; i++) {
 				byte byte0 = md[i];
-				str[k++] = hexDigits[byte0 >>> 4 & 0xf];// 分成高低4位处理
+				str[k++] = hexDigits[byte0 >>> 4 & 0xf];// Divided into high and low 4 bits
 				str[k++] = hexDigits[byte0 & 0xf];
 			}
 			return new String(str);

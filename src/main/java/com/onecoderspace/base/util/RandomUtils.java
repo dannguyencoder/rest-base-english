@@ -7,10 +7,10 @@ public class RandomUtils {
 	private static final int[] numArr = {0,1,2,3,4,5,6,7,8,9};
 	
 	/**
-	 * 随机获取两位数字
+	 * Get two digits at random
 	 * @author yangwk
 	 * @time 2017年7月28日 下午3:26:44
-	 * @param length 数字长度
+	 * @param length Digital length
 	 * @return
 	 */
 	public static String randomNum(int length){

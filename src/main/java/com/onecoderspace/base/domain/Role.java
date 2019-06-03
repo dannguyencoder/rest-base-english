@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.onecoderspace.base.component.common.domain.BaseModel;
 
 /**
- * 角色
+ * Character
  */
 @Entity
 @Table(name = "role")
@@ -20,16 +20,16 @@ public class Role implements BaseModel<Integer>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;//主键
+	private Integer id;//Primary key
 	
 	@Column(name="name",length=50)
-	private String name; //角色名称,通常为中文，用于展示
+	private String name; //The name of the role, usually in Chinese, for display
 	
 	@Column(name="code",length=45)
-	private String code; //角色的值，用来校验权限，通常为英文
+	private String code; //The value of the role, used to verify permissions, usually in English
 	
 	@Column(name="remark",length=255)
-	private String remark; //备注
+	private String remark; //Remarks
 	
 	@Override
 	public Integer getId() {

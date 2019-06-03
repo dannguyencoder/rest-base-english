@@ -7,7 +7,7 @@ import com.onecoderspace.base.component.common.service.BaseService;
 import com.onecoderspace.base.domain.UserRole;
 
 /**
- *用户角色
+ *User role
  */
 public interface UserRoleService extends BaseService<UserRole, Integer>{
 
@@ -16,11 +16,11 @@ public interface UserRoleService extends BaseService<UserRole, Integer>{
 	void deleleByUserId(int uid);
 
 	/**
-	 * 添加角色
+	 * Add a role
 	 * @author yangwk
-	 * @time 2017年7月28日 下午2:12:35
-	 * @param userId 用户ID
-	 * @param code 角色编码
+	 * @time July 28, 2017 2:12:35 PM
+	 * @param userId user ID
+	 * @param code character encoding
 	 */
 	void add(int id, String code);
 

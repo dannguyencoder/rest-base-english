@@ -8,22 +8,22 @@ import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
 /**
- * xss非法标签过滤
- * {@link http://www.jianshu.com/p/32abc12a175a?nomobile=yes}
- * @author yangwenkui
- * @version v2.0
- * @time 2017年4月27日 下午5:47:09
- */
+  * xss illegal label filtering
+  * {@link http://www.jianshu.com/p/32abc12a175a?nomobile=yes}
+  * @author yangwenkui
+  * @version v2.0
+  * @time April 27, 2017 5:47:09 PM
+  */
 public class JsoupUtil {
 
 	/**
-	 * 使用自带的basicWithImages 白名单
-	 * 允许的便签有a,b,blockquote,br,cite,code,dd,dl,dt,em,i,li,ol,p,pre,q,small,span,
+	 * Use the built-in basicWithImages whitelist
+	 * Allowed notes are a, b, blockquote, br, cite, code, dd, dl, dt, em, i, li, ol, p, pre, q, small, span,
 	 * strike,strong,sub,sup,u,ul,img
-	 * 以及a标签的href,img标签的src,align,alt,height,width,title属性
+	 * and the href of the a tag, the src, align, alt, height, width, title attributes of the img tag
 	 */
 	private static final Whitelist whitelist = Whitelist.basicWithImages();
-	/** 配置过滤化参数,不对代码进行格式化 */
+	/** Configure filter parameters without formatting the code */
 	private static final Document.OutputSettings outputSettings = new Document.OutputSettings().prettyPrint(false);
 	static {
 		// 富文本编辑时一些样式是使用style来进行实现的

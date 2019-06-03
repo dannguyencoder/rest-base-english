@@ -15,14 +15,14 @@ public class JacksonHelper {
 	private static final ObjectMapper mapper = new ObjectMapper();
 	
 	private static Logger logger = LoggerFactory.getLogger(JacksonHelper.class);
-	
-	
+
+
 	/**
-	 * 将对象转化为json
+	 * Convert objects to json
 	 * @author yangwenkui
-	 * @time 2017年3月16日 下午2:55:10
-	 * @param obj 待转化的对象
-	 * @return 当转化发生异常时返回null
+	 * @time March 16, 2017 2:55:10 PM
+	 * @param obj object to be converted
+	 * @return returns null when an exception occurs in the conversion
 	 */
 	public static String toJson(Object obj){
 		if(obj == null){
@@ -35,14 +35,14 @@ public class JacksonHelper {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * 将json转化为对象
+	 * Convert json to an object
 	 * @author yangwenkui
-	 * @time 2017年3月16日 下午2:56:26
-	 * @param json json对象
-	 * @param clazz 待转化的对象类型
-	 * @return 当转化发生异常时返回null
+	 * @time March 16, 2017 2:56:26 PM
+	 * @param json json object
+	 * @param clazz object type to be converted
+	 * @return returns null when an exception occurs in the conversion
 	 */
 	public static <T> T fromJson(String json,Class<T> clazz){
 		if(json == null){
@@ -55,14 +55,14 @@ public class JacksonHelper {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * 将json对象转化为集合类型
+	 * Convert json objects to collection types
 	 * @author yangwenkui
-	 * @time 2017年3月16日 下午2:57:15
-	 * @param json json对象
-	 * @param collectionClazz 具体的集合类的class，如：ArrayList.class
-	 * @param clazz 集合内存放的对象的class
+	 * @time March 16, 2017 2:57:15 PM
+	 * @param json json object
+	 * @param collectionClazz The class of the concrete collection class, such as: ArrayList.class
+	 * @param clazz The class of the object stored in the collection
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")

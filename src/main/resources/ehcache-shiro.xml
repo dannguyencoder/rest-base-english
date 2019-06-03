@@ -5,23 +5,23 @@
     <diskStore path="java.io.tmpdir"/>
     
     <!--
-       name:缓存名称。
-       maxElementsInMemory:缓存最大数目
-       maxElementsOnDisk：硬盘最大缓存个数。 
-       eternal:对象是否永久有效，一但设置了，timeout将不起作用。 
-       overflowToDisk:是否保存到磁盘，当系统当机时
-       timeToIdleSeconds:设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=false对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。
-       timeToLiveSeconds:设置对象在失效前允许存活时间（单位：秒）。最大时间介于创建时间和失效时间之间。仅当eternal=false对象不是永久有效时使用，默认是0.，也就是对象存活时间无穷大。
-       diskPersistent：是否缓存虚拟机重启期数据 Whether the disk store persists between restarts of the Virtual Machine. The default value is false. 
-       diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。 
-       diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。
-       memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。 
-        clearOnFlush：内存数量最大时是否清除。
-         memoryStoreEvictionPolicy:
-            Ehcache的三种清空策略;
-            FIFO，first in first out，这个是大家最熟的，先进先出。
-            LFU， Less Frequently Used，就是上面例子中使用的策略，直白一点就是讲一直以来最少被使用的。如上面所讲，缓存的元素有一个hit属性，hit值最小的将会被清出缓存。
-            LRU，Least Recently Used，最近最少使用的，缓存的元素有一个时间戳，当缓存容量满了，而又需要腾出地方来缓存新的元素的时候，那么现有缓存元素中时间戳离当前时间最远的元素将被清出缓存。
+       Name: The name of the cache.
+       maxElementsInMemory: maximum number of caches
+       maxElementsOnDisk: The maximum number of caches on the hard disk.
+       Eternal: Whether the object is permanently valid, once set, timeout will not work.
+       overflowToDisk: whether to save to disk, when the system is down
+       timeToIdleSeconds: Sets the allowable idle time (in seconds) before the object expires. Only used when the eternal=false object is not permanently valid. Optional attribute, the default value is 0, which means that the idle time is infinite.
+       timeToLiveSeconds: Sets the allowable lifetime (in seconds) before the object expires. The maximum time is between the creation time and the expiration time. Only used when the eternal=false object is not permanently valid. The default is 0. That is, the object lifetime is infinite.
+       diskPersistent: Whether to cache virtual machine restart period data. The disk store persists between restarts of the Virtual Machine. The default value is false.
+       diskSpoolBufferSizeMB: This parameter sets the buffer size of the DiskStore. The default is 30MB. Each Cache should have its own buffer.
+       diskExpiryThreadIntervalSeconds: Disk invalid thread running interval, the default is 120 seconds.
+       memoryStoreEvictionPolicy: When the maxElementsInMemory limit is reached, Ehcache will clean up the memory according to the specified policy. The default policy is LRU (least recently used). You can set it to FIFO (first in, first out) or LFU (less used).
+        clearOnFlush: Whether to clear when the maximum amount of memory.
+         memoryStoreEvictionPolicy:
+            Three emptying strategies for Ehcache;
+            FIFO, first in first out, this is the most familiar, first in, first out.
+            LFU, Less Frequently Used, is the strategy used in the above example. It is straightforward to say that it has been used the least. As mentioned above, the cached element has a hit attribute, and the smallest hit value will be cleared out of the cache.
+            LRU, Least Recently Used, the least recently used, cached element has a timestamp, when the cache capacity is full, and need to make room to cache new elements, then the timestamp in the existing cache element is away from the current time The farthest element will be cleared out of the cache.
     -->
      <defaultCache
             maxElementsInMemory="10000"

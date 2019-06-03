@@ -1,29 +1,29 @@
 # rest-base
-基于spring boot搭建的web基础框架，包含了web开发中常用的功能，如：缓存（redis）、日志、事务、JPA、shiro、安全、常用工具类、swagger2在线接口文档、跨域支持等，可以基于该项目快速进行公司内部的项目开发。
+Based on the spring boot built web infrastructure, including the commonly used functions in web development, such as: cache (redis), log, transaction, JPA, shiro, security, common tools, swagger2 online interface documentation, cross-domain support, etc. Rapid project development within the company based on the project.
 
-# 运行方式
-1. 本地创建数据库base，调整application-local.properties内的mysql和redis配置；
-2. 创建数据库后，直接运行BaseApplication，待项目启动后，在数据库内执行doc目录下的init.sql和index.sql;
-3. 访问http://localhost:8070/login/submit?username=admin&pwd=admin2017进行登录
-4. 访问http://localhost:8070/swagger-ui.html查看接口文档；
-5. 访问http://localhost:8070/admin/user/list测试接口；
+# Operation mode
+1. Create a database base locally, and adjust the mysql and redis configurations in application-local.properties.
+2. After creating the database, run BaseApplication directly. After the project starts, execute init.sql and index.sql in the doc directory in the database.
+3. Log in at http://localhost:8070/login/submit?username=admin&pwd=admin2017
+4. Visit http://localhost:8070/swagger-ui.html to view the interface documentation.
+5. Access the http://localhost:8070/admin/user/list test interface;
 
-# redis安装方式
-$ wget http://download.redis.io/releases/redis-4.0.2.tar.gz  
-$ tar xzf redis-4.0.2.tar.gz  
-$ cd redis-4.0.2  
-$ make  
+# redis installation method
+$ wget http://download.redis.io/releases/redis-4.0.2.tar.gz
+$ tar xzf redis-4.0.2.tar.gz
+$ cd redis-4.0.2
+$ make
 
-修改Redis配置文件redis.conf，改变配置：  
-daemonize yes  
-requirepass test!@#$%  
+Modify the Redis configuration file redis.conf and change the configuration:
+Daemonize yes
+Requirepass test!@#$%
 
-$ src/redis-server  
-src/redis-cli  
+$ src/redis-server
+Src/redis-cli
 
 
-# 简书博客
-http://www.jianshu.com/u/1182bf416662
+#简书博客
+Http://www.jianshu.com/u/1182bf416662
 
 # csdn博客
-http://blog.csdn.net/u014411966
+Http://blog.csdn.net/u014411966

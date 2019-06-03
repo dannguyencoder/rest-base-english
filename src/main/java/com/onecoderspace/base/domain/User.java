@@ -14,7 +14,7 @@ import com.onecoderspace.base.component.common.domain.BaseModel;
 import java.sql.Timestamp;
 
 /**
- * 用户
+ * user
  */
 @Entity
 @Table(name = "user")
@@ -24,80 +24,80 @@ public class User implements BaseModel<Integer>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;//主键
+	private Integer id;//Primary key
 	
-	@ApiModelProperty(value="用户类别  0普通用户 1运营人员")
+	@ApiModelProperty(value="User Category 0 General User 1 Operator")
 	@Column(columnDefinition="tinyint default 0")
 	private int type = 0;
 	
-	@ApiModelProperty(value="账号")
+	@ApiModelProperty(value="account number")
 	@Column(name="username",length=50)
 	private String username; 
 	
-	@ApiModelProperty(value="姓名")
+	@ApiModelProperty(value="Name")
 	@Column(name="name",length=50)
 	private String name; 
 	
-	@ApiModelProperty(value="密码（md5(mix(password,salt))）")
+	@ApiModelProperty(value="password（md5(mix(password,salt))）")
 	@Column(name="pwd",length=50)
 	private String pwd;
 	
-	@ApiModelProperty(value="密码加密的“盐”")
+	@ApiModelProperty(value="Password-encrypted \"salt\"")
 	@Column(name="salt",length=16)
 	private String salt;
 	
-	@ApiModelProperty(value="手机号")
+	@ApiModelProperty(value="phone number")
 	@Column(name="mobile",length=15)
 	private String mobile;
 	
-	@ApiModelProperty(value="邮箱")
+	@ApiModelProperty(value="mailbox")
 	@Column(name="email",length=50)
 	private String email; 
 	
-	@ApiModelProperty(value="昵称")
+	@ApiModelProperty(value="nickname")
 	@Column(name="nick_name",length=50)
 	private String nickName;
 	
-	@ApiModelProperty(value="性别 0未设置 1男 2女")
+	@ApiModelProperty(value="Gender 0 is not set 1 male 2 female")
 	@Column(name="gender",columnDefinition="tinyint default 0")
 	private int gender = 0;
 	
-	@ApiModelProperty(value="账号状态 0已注册未审核  1待审核 2审核通过  -1审核未通过")
+	@ApiModelProperty(value="Account Status 0Registered Unreviewed 1 Pending Review 2 Audit Passed -1 Review failed")
 	@Column(name="status",columnDefinition="tinyint default 0")
 	private int status = 0;
 	
-	@ApiModelProperty(value="账号是否有效 1有效 0无效")
+	@ApiModelProperty(value="Whether the account is valid 1 valid 0 is invalid")
 	@Column(name="enable",columnDefinition="tinyint default 1")
 	private int enable = 0; 
 	
-	@ApiModelProperty(value="用户头像  相对路径，不要带域名")
+	@ApiModelProperty(value="User avatar relative path, do not bring a domain name")
 	@Column(name="avatar",length=255)
 	private String avatar;
 	
-	@ApiModelProperty(value="注册时间")
+	@ApiModelProperty(value="Registration time")
 	@Column(name="register_time")
 	private Timestamp registerTime;
 	
-	@ApiModelProperty(value="最后更新人")
+	@ApiModelProperty(value="Last updater")
 	@Column(name="updator",columnDefinition="int default 0")
 	private int updator = 0;
 	
-	@ApiModelProperty(value="最后更新时间")
+	@ApiModelProperty(value="Last update time")
 	@Column(name="update_time")
 	private Timestamp updateTime;
 	
-	@ApiModelProperty(value="标记删除字段  1已删除  0未删除")
+	@ApiModelProperty(value="Tag Delete Field 1 Deleted 0 Not Deleted")
 	@Column(name="del",columnDefinition="tinyint default 0")
 	private int del = 0;
 	
 	
-	//账号状态 0已注册未审核  1待审核 2审核通过  -1审核未通过
+	//Account Status 0Registered Unreviewed 1 Pending Review 2 Audit Passed -1 Review failed
 	public static final int	STATUS_UNAUDIT = 0;
 	public static final int	STATUS_WAIT_AUDIT = 1;
 	public static final int	STATUS_AUDIT_PASS = 2;
 	public static final int	STATUS_AUDIT_UNPASS = -1;
 	
-	//用户类别  0普通用户 1运营人员
+	//User Category 0 General User 1 Operator
 	public static final int	TYPE_USER = 0;
 	public static final int	TYPE_OPERATOR = 1;
 	

@@ -6,7 +6,7 @@ import com.onecoderspace.base.component.common.service.BaseService;
 import com.onecoderspace.base.domain.Permission;
 
 /**
- *菜单及操作权限,树形结构
+ *Menu and operation authority, tree structure
  */
 public interface PermissionService extends BaseService<Permission, Integer>{
 

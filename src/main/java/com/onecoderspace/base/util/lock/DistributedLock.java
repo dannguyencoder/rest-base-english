@@ -8,26 +8,26 @@
 package com.onecoderspace.base.util.lock;
 
 /**
- * Title: 分布式锁接口
- * @author yangwenkui
- * @version v1.0
- * @time 2016年5月6日 上午10:52:58
- */
+  * Title: Distributed lock interface
+  * @author yangwenkui
+  * @version v1.0
+  * @time May 6, 2016 10:52:58 AM
+  */
 public interface DistributedLock {
-	
+
 	/**
-	 * 获取锁
+	 * Get the lock
 	 * @author yangwenkui
-	 * @time 2016年5月6日 上午11:02:54
+	 * @time May 6, 2016 11:02:54 AM
 	 * @return
 	 * @throws InterruptedException
 	 */
 	public boolean acquire();
-	
+
 	/**
-	 * 释放锁
+	 * Release lock
 	 * @author yangwenkui
-	 * @time 2016年5月6日 上午11:02:59
+	 * @time May 6, 2016 11:02:59 AM
 	 */
 	public void release();
 	

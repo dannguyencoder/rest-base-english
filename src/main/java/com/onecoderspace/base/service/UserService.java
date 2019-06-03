@@ -17,19 +17,19 @@ public interface UserService extends BaseService<User, Integer>{
 	User findByUsername(String username);
 
 	/**
-	 * 设置密码
+	 * set password
 	 * @author yangwk
-	 * @time 2017年7月27日 上午10:15:12
+	 * @time July 27, 2017 10:15:12 AM
 	 * @param entity
 	 * @param pwd
 	 * @return
 	 */
 	Return changePwd(User entity, String pwd);
-	
+
 	/**
-	 * 带条件分页查询
+	 * Conditional paging query
 	 * @author yangwk
-	 * @time 2017年7月27日 上午10:15:26
+	 * @time July 27, 2017 10:15:26 AM
 	 * @param params
 	 * @param pageable
 	 * @return
@@ -37,20 +37,20 @@ public interface UserService extends BaseService<User, Integer>{
 	Page<User> listByPage(Map<String, String> params,Pageable pageable);
 
 	/**
-	 * 保存审核结果
+	 * Save the audit results
 	 * @author yangwk
-	 * @time 2017年7月27日 上午10:14:11
-	 * @param entity 素材新
-	 * @param value 审核结果 1通过 0未通过
-	 * @param msg 备注新
+	 * @time July 27, 2017 10:14:11 AM
+	 * @param entity material new
+	 * @param value Audit result 1 Pass 0 failed
+	 * @param msg Remarks new
 	 * @return
 	 */
 	Return doAudit(User entity, int value, String msg);
 
 	/**
-	 * 设置用户的角色
+	 * Set the role of the user
 	 * @author yangwk
-	 * @time 2017年7月27日 上午10:15:01
+	 * @time July 27, 2017 10:15:01 AM
 	 * @param uid
 	 * @param roleIds
 	 * @return
@@ -58,11 +58,11 @@ public interface UserService extends BaseService<User, Integer>{
 	Return doSetRoles(int uid, String roleIds);
 
 	/**
-	 * 保存用户
+	 * Save user
 	 * @author yangwk
-	 * @time 2017年7月28日 下午1:37:24
-	 * @param user 用户信息
-	 * @param company 公司信息
+	 * @time July 28, 2017 1:37:24 PM
+	 * @param user User Information
+	 * @param company Company Information
 	 * @return
 	 */
 	Return saveUser(User user);

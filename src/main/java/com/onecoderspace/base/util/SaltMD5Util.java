@@ -4,29 +4,29 @@ import org.apache.commons.lang3.StringUtils;
 
 
 /**
- * 加盐MD5算法
- * 用户账号信息内保存salt，和md5(compone(salt,pwd)),用户登录时用同样的算法加密后进行匹配
- * 这样即使用户数据泄露，攻击者也极难破解用户信息
- * @author yangwenkui
- * @version v2.0
- */
+  * Salted MD5 algorithm
+  * Save the salt in the user account information, and md5 (compone(salt, pwd)). When the user logs in, use the same algorithm to encrypt and match.
+  * This makes it extremely difficult for an attacker to crack user information even if user data is compromised.
+  * @author yangwenkui
+  * @version v2.0
+  */
 public class SaltMD5Util {
 
 	/**
-	 * 获取MD5加密参数
+	 * Get MD5 encryption parameters
 	 * @author yangwenkui
-	 * @time 2017年4月25日 下午4:53:57
-	 * @param length length值 建议16位或32位
+	 * @time April 25, 2017 4:53:57 PM
+	 * @param length length value 16 or 32 bits recommended
 	 * @return
 	 */
 	public static String getSalt(){
 		return TokenUtils.generateToken(16);
 	}
-	
+
 	/**
-	 * 通过salt+MD5方式加密
+	 * Encrypted by salt+MD5
 	 * @author yangwenkui
-	 * @time 2017年4月25日 下午5:20:32
+	 * @time April 25, 2017 5:20:32 PM
 	 * @param pwd
 	 * @param salt
 	 * @return
@@ -40,12 +40,12 @@ public class SaltMD5Util {
 	}
 
 	/**
-	 * 将密码明文和salt混合，混合方式为salt一个字符+一个密码明文字符，逐个追加
-	 * 如：密码明文（123），salt（abcd），则结果为a1b2c3d
+	 * Mix the password plain text and salt, the mixing method is salt one character + one password plain text character, append one by one
+	 * For example: password plain text (123), salt (abcd), the result is a1b2c3d
 	 * @author yangwenkui
-	 * @time 2017年4月25日 下午5:12:02
-	 * @param pwd 密码明文
-	 * @param salt 随机获取的加密字符 16位
+	 * @time April 25, 2017 5:12:02 PM
+	 * @param pwd password clear text
+	 * @param salt Randomly obtained encrypted characters 16 bits
 	 * @return
 	 */
 	private static String mixStr(String pwd, String salt) {

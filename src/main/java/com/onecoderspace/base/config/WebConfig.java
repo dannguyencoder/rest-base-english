@@ -69,7 +69,7 @@ public class WebConfig {
 	}
 	
 	/**
-	 * 参数绑定时将String时间转换为Date
+	 * Convert String time to Date when parameter binding
 	 * @author yangwk
 	 * @time 2017年7月26日 下午4:53:19
 	 * @return
@@ -92,7 +92,7 @@ public class WebConfig {
     }
 
 	/**
-	 * 解决跨域调用问题
+	 * Resolve cross-domain calling issues
 	 */
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
@@ -108,7 +108,7 @@ public class WebConfig {
 	}
 
 	/**
-	 * xss过滤拦截器
+	 * Xss filter interceptor
 	 */
 	@Bean
 	public FilterRegistrationBean xssFilterRegistrationBean() {
@@ -125,7 +125,7 @@ public class WebConfig {
 	}
 
 	/**
-	 * csrf过滤拦截器 只处理post请求
+	 * Csrf filter interceptor only handles post requests
 	 */
 	@Bean
 	public FilterRegistrationBean csrfFilterRegistrationBean() {

@@ -36,7 +36,7 @@ public class ShiroConfigration {
     }
 
     /**
-     * cookie管理对象;
+     * Cookie management object;
      */
     @Bean
     public CookieRememberMeManager rememberMeManager() {
@@ -72,34 +72,34 @@ public class ShiroConfigration {
         MyShiroRealm myShiroRealm = new MyShiroRealm();
         return myShiroRealm;
     }
-    
-    @Bean(name="securityManager")  
-    public DefaultWebSecurityManager securityManager() {  
-        DefaultWebSecurityManager manager = new DefaultWebSecurityManager();  
-        manager.setRealm(myShiroRealm()); 
+
+    @Bean(name="securityManager")
+    public DefaultWebSecurityManager securityManager() {
+        DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
+        manager.setRealm(myShiroRealm());
         manager.setRememberMeManager(rememberMeManager());
-        manager.setCacheManager(ehCacheManager());  
-        return manager;  
-    }  
-    
+        manager.setCacheManager(ehCacheManager());
+        return manager;
+    }
+
 
     /**
-     * ShiroFilterFactoryBean 处理拦截资源文件问题。
-     * 注意：单独一个ShiroFilterFactoryBean配置是或报错的，以为在
-     * 初始化ShiroFilterFactoryBean的时候需要注入：SecurityManager
-     * <p>
-     * Filter Chain定义说明
-     * 1、一个URL可以配置多个Filter，使用逗号分隔
-     * 2、当设置多个过滤器时，全部验证通过，才视为通过
-     * 3、部分过滤器可指定参数，如perms，roles
-     */
+      * ShiroFilterFactoryBean handles the problem of intercepting resource files.
+      * Note: A single ShiroFilterFactoryBean configuration is either error or not, thinking that
+      * Initiate ShiroFilterFactoryBean when injecting: SecurityManager
+      * <p>
+      * Filter Chain definition description
+      * 1, a URL can be configured with multiple filters, separated by commas
+      * 2. When multiple filters are set, all verifications are passed and are considered as passed.
+      * 3, some filters can specify parameters, such as perms, roles
+      */
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
         logger.debug("ShiroConfigration.getShiroFilterFactoryBean()");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 必须设置 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager());
-        
+
         HashMap<String, javax.servlet.Filter> loginFilter = new HashMap<>();
         loginFilter.put("loginFilter", new LoginFilter());
         shiroFilterFactoryBean.setFilters(loginFilter);
@@ -110,7 +110,7 @@ public class ShiroConfigration {
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
-        
+
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
 
@@ -124,13 +124,13 @@ public class ShiroConfigration {
     }
 
     /**
-     * shiro缓存管理器;
-     * 需要注入对应的其它的实体类中：
-     * 1、安全管理器：securityManager
-     * 可见securityManager是整个shiro的核心；
-     *
-     * @return
-     */
+      * shiro cache manager;
+      * Need to be injected into the corresponding other entity class:
+      * 1, security manager: securityManager
+      * Visible securityManager is the core of the entire shiro;
+      *
+      * @return
+      */
     @Bean
     public EhCacheManager ehCacheManager() {
         EhCacheManager cacheManager = new EhCacheManager();

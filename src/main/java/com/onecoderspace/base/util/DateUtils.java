@@ -12,52 +12,52 @@ public class DateUtils {
 	public final static String DATE_FORMAT_TIME = "yyyy-MM-dd HH:mm";
 	public final static String DATE_FORMAT_ALL = "yyyy-MM-dd HH:mm:ss";
 	public final static String DATE_CHINA_DEFAULT = "yyyy年MM月dd日";
-	
+
 	/**
-	 * 获取指定日期前后num天的日期
+	 * Get the date of num days before and after the specified date
 	 * @author yangwk
-	 * @time 2017年9月14日 上午11:13:18
+	 * @time September 14, 2017 11:13:18 AM
 	 * @param date
-	 * @param num 正数 多少天之后的日期  负数 多少天之后的日期
+	 * @param num positive number how many days after the date negative number how many days later
 	 * @return
 	 */
 	public static String getDay(String date,int num){
 		return getDay(date, num,DATE_FORMAT_DEFAULT);
 	}
-	
+
 	/**
-	 * 获取指定日期前后num天的日期
+	 * Get the date of num days before and after the specified date
 	 * @author yangwk
-	 * @time 2017年9月14日 上午11:13:18
+	 * @time September 14, 2017 11:13:18 AM
 	 * @param date
-	 * @param num 正数 多少天之后的日期  负数 多少天之后的日期
-	 * @param format 日期格式
+	 * @param num positive number how many days after the date negative number how many days later
+	 * @param format date format
 	 * @return
 	 */
 	public static String getDay(String date,int num,String format){
 		long t = parseStringToLong(date);
 		return getDay(t, num, DATE_FORMAT_DEFAULT);
 	}
-	
+
 	/**
-	 * 获取指定日期前后num天的日期
+	 * Get the date of num days before and after the specified date
 	 * @author yangwk
-	 * @time 2017年9月14日 上午11:13:18
+	 * @time September 14, 2017 11:13:18 AM
 	 * @param date
-	 * @param num 正数 多少天之后的日期  负数 多少天之后的日期
+	 * @param num positive number how many days after the date negative number how many days later
 	 * @return
 	 */
 	public static String getDay(long date,int num){
 		return getDay(date, num, DATE_FORMAT_DEFAULT);
 	}
-	
+
 	/**
-	 * 获取指定日期前后num天的日期
+	 * Get the date of num days before and after the specified date
 	 * @author yangwk
-	 * @time 2017年9月14日 上午11:13:18
+	 * @time September 14, 2017 11:13:18 AM
 	 * @param date
-	 * @param num 正数 多少天之后的日期  负数 多少天之后的日期
-	 * @param format 日期格式
+	 * @param num positive number how many days after the date negative number how many days later
+	 * @param format date format
 	 * @return
 	 */
 	public static String getDay(long date,int num,String format){
@@ -68,10 +68,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * 将毫秒时间转换为yyyy-MM-dd格式的时间
+	 * Convert the millisecond time to the time in yyyy-MM-dd format
 	 * @author yangwenkui
-	 * @time 2017年10月6日 下午5:56:40
-	 * @param time 毫秒数
+	 * @time October 6, 2017 5:56:40 PM
+	 * @param time milliseconds
 	 * @return
 	 */
 	public static String longToString(long time) {
@@ -79,11 +79,11 @@ public class DateUtils {
 	}
 
 	/**
-	 * 将毫秒时间转换为指定格式的时间
+	 * Convert the millisecond time to the specified format
 	 * @author yangwenkui
-	 * @time 2017年10月6日 下午5:56:40
-	 * @param time 毫秒数
-	 * @param format 日期格式
+	 * @time October 6, 2017 5:56:40 PM
+	 * @param time milliseconds
+	 * @param format date format
 	 * @return
 	 */
 	public static String longToString(long time, String format) {
@@ -95,9 +95,9 @@ public class DateUtils {
 	}
 
 	/**
-	 * 获取今天开始的时间
+	 * Get the time to start today
 	 * @author yangwenkui
-	 * @time 2017年10月6日 下午5:58:18
+	 * @time October 6, 2017 5:58:18 PM
 	 * @return
 	 */
 	public static Timestamp getTodayStartTime() {
@@ -108,11 +108,11 @@ public class DateUtils {
 		cal.set(Calendar.MILLISECOND, 001);
 		return new Timestamp(cal.getTimeInMillis());
 	}
-	
+
 	/**
-	 * 获取指定日期开始的当日开始时间
+	 * Get the start time of the day starting on the specified date
 	 * @author yangwenkui
-	 * @time 2017年10月6日 下午5:58:33
+	 * @time October 6, 2017 5:58:33 PM
 	 * @param date
 	 * @return
 	 */
@@ -125,11 +125,11 @@ public class DateUtils {
 		cal.set(Calendar.MILLISECOND, 001);
 		return cal.getTimeInMillis();
 	}
-	
+
 	/**
-	 * 获取指定日期结束时间
+	 * Get the specified date end time
 	 * @author yangwenkui
-	 * @time 2017年10月6日 下午5:58:58
+	 * @time October 6, 2017 5:58:58 PM
 	 * @param date
 	 * @return
 	 */
@@ -144,15 +144,15 @@ public class DateUtils {
 	}
 
 	/**
-	 * 获得当前日期
+	 * Get current date
 	 */
 	public static String getCurrentTime() {
 		return getCurrentTime("yyyy-MM-dd");
 	}
 
 	/**
-	 * 获得当前时间
-	 * @param format 日期格式
+	 * Get current time
+	 * @param format date format
 	 * @return
 	 */
 	public static String getCurrentTime(String format) {
@@ -161,9 +161,9 @@ public class DateUtils {
 	}
 
 	/**
-	 * 将字符串类型的日期转换为毫秒数
+	 * Convert date of string type to milliseconds
 	 * @author yangwenkui
-	 * @time 2017年10月6日 下午6:00:27
+	 * @time October 6, 2017 6:00:27 PM
 	 * @param dateStr
 	 * @return
 	 */

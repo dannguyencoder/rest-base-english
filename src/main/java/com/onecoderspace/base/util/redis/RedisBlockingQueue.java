@@ -11,7 +11,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import com.onecoderspace.base.util.SpringContextUtil;
 
 /**
- * redis的list为双向链表，使用左出右进的策略构建一个queue
+ * Redis's list is a doubly linked list, using a left-to-right strategy to build a queue
  *
  */
 public class RedisBlockingQueue implements BlockingQueue<String> {

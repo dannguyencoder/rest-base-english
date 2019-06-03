@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
   
 /** 
- * 通过拦截器设置shiroSession过期时间
+ * Set the shiroSession expiration time via the interceptor
  * @author yangwk 
  */  
 public class ShiroSessionFilter implements Filter {  

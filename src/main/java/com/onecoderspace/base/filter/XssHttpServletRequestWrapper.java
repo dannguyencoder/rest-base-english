@@ -21,9 +21,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }  
   
     /** 
-    * 覆盖getParameter方法，将参数名和参数值都做xss过滤。<br/> 
-    * 如果需要获得原始的值，则通过super.getParameterValues(name)来获取<br/> 
-    * getParameterNames,getParameterValues和getParameterMap也可能需要覆盖 
+    * Override the getParameter method, and filter the parameter name and parameter values by xss. Tr
+    * If you need to get the original value, get it by super.getParameterValues(name)<br/>
+    * getParameterNames, getParameterValues and getParameterMap may also need to be overwritten
     */  
     @Override  
     public String getParameter(String name) {  
@@ -51,9 +51,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     
   
     /** 
-    * 覆盖getHeader方法，将参数名和参数值都做xss过滤。<br/> 
-    * 如果需要获得原始的值，则通过super.getHeaders(name)来获取<br/> 
-    * getHeaderNames 也可能需要覆盖 
+    * Override the getHeader method, and filter the parameter name and parameter values by xss. Tr
+    * If you need to get the original value, get it by super.getHeaders(name)<br/>
+    * getHeaderNames may also need to be overwritten
     */  
     @Override  
     public String getHeader(String name) {  
@@ -66,7 +66,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }  
   
     /** 
-    * 获取最原始的request 
+    * Get the most original request
     * 
     * @return 
     */  
@@ -75,7 +75,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }  
   
     /** 
-    * 获取最原始的request的静态方法 
+    * Get the static method of the most primitive request
     * 
     * @return 
     */  

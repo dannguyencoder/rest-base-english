@@ -19,7 +19,7 @@ public class ListOptionHelper {
 	private static Logger logger = LoggerFactory.getLogger(JacksonHelper.class);
 
 	/**
-	 * 获取在first集合内而不在second集合内的元素
+	 * Get the elements in the first collection instead of the second collection
 	 * @param first
 	 * @param second
 	 * @return
@@ -38,15 +38,15 @@ public class ListOptionHelper {
         }
         
         return result;  
-    }  
-    
-    /**
-     * 获得在list内同时在list2内的元素
-     * 注意：在结果集内并不去重，如果list内本身有重复，返回的结果内可能包含相同元素
-     * @param list
-     * @param list2
-     * @return
-     */
+    }
+
+	/**
+      * Get the elements in the list and in the list2 at the same time
+      * Note: It is not de-emphasized in the result set. If there is a duplicate in the list itself, the returned result may contain the same element.
+      * @param list
+      * @param list2
+      * @return
+      */
     public static List<String> getSameElements(Collection<String> list, Collection<String> list2) {
 	    	long t = System.nanoTime();
 	    	Set<String> set = new HashSet<String>(list2);
@@ -61,10 +61,10 @@ public class ListOptionHelper {
         }
 		return sameElements;
 	}
-	
-	
+
+
 	/**
-	 * 判断集合list和list2内是否有相同元素
+	 * Determine if there is the same element in the collection list and list2
 	 * @param list
 	 * @param list2
 	 * @return
@@ -79,9 +79,9 @@ public class ListOptionHelper {
 	}
 
 	/**
-	 * 辅助方法，将字符串分割转换为list
+	 * A helper method that converts string splits to lists
 	 * @author yangwenkui
-	 * @time 2017年1月10日 下午4:22:20
+	 * @time January 10, 2017 4:22:20 PM
 	 * @param provinceIds
 	 * @return
 	 */
@@ -122,12 +122,12 @@ public class ListOptionHelper {
 			System.out.println("size="+list.size()+JacksonHelper.toJson(list));
 		}
 	}
-	
-	
-	
-	
-	
-	/**以下方法因低效，放弃使用*/
+
+
+
+
+
+/**The following methods are inefficient due to inefficiency*/
 //	public static List<String> getDiffList1(List<String> firstList, List<String> secondList) {
 //		if(CollectionUtils.isEmpty(firstList)){
 //			return Lists.newArrayList();

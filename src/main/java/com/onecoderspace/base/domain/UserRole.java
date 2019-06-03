@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.onecoderspace.base.component.common.domain.BaseModel;
 
 /**
- * 用户角色
+ * User role
  */
 @Entity
 @Table(name = "user_role")
@@ -20,13 +20,13 @@ public class UserRole implements BaseModel<Integer>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;//主键
+	private Integer id;//Primary key
 	
 	@Column(name="user_id",columnDefinition="int default 0")
-	private int userId; //用户ID
+	private int userId; //User ID
 	
 	@Column(name="role_id",columnDefinition="int default 0")
-	private int roleId; //角色ID
+	private int roleId; //Role ID
 	
 	@Override
 	public Integer getId() {

@@ -7,7 +7,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 public class LoginSessionHelper {
 
 	/**
-	 * 返回当前用户ID
+	 * Return current user ID
 	 * @return
 	 */
 	public static int getCurrentUserId(){
@@ -20,7 +20,7 @@ public class LoginSessionHelper {
 	}
 	
 	/**
-	 * 返回当前用户唯一标记，当用户已登录，返回用户ID，当用户未登录，返回sessionId
+	 * Returns the current user unique token. When the user is logged in, the user ID is returned. When the user is not logged in, the sessionId is returned.
 	 * @return
 	 */
 	public static String getCurrentUserKey(){

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.common.collect.Maps;
 
 /**
- * 全局异常捕获
+ * Global exception capture
  * @author yangwenkui
  */
 @ControllerAdvice
@@ -23,7 +23,7 @@ public class GlobalDefaultExceptionHandler {
 	private static Logger logger = LoggerFactory.getLogger(GlobalDefaultExceptionHandler.class);
 
 	/**
-	 * 未授权异常处理
+	 * Unauthorized exception handling
 	 * @author yangwk
 	 * @return
 	 */
@@ -35,7 +35,7 @@ public class GlobalDefaultExceptionHandler {
 		
 		Map<String, Object> map = Maps.newHashMap();
 		map.put("code", "-10000");
-		map.put("msg", "您没有访问权限");
+		map.put("msg", "You don't have access");
 		return map;
 	}
 	
@@ -48,7 +48,7 @@ public class GlobalDefaultExceptionHandler {
 		
 		Map<String, Object> map = Maps.newHashMap();
 		map.put("code", "-10000");
-		map.put("msg", "系统繁忙");
+		map.put("msg", "The system is busy");
 		return map;
 	}
 

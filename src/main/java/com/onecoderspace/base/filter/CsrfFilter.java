@@ -24,9 +24,9 @@ import com.onecoderspace.base.util.AjaxResponseWriter;
 import com.onecoderspace.base.util.ServiceStatusEnum;
   
 /** 
- * CSRF跨域请求伪造拦截
- * 除登录以外的post方法，都需要携带token，如果token为空或token错误，则返回异常提示
- * 注意在filter初始化参数内配置排除的url
+ * CSRF cross-domain request forgery interception
+ * In addition to the post method other than login, you need to carry a token. If the token is empty or the token is incorrect, an exception is returned.
+ * Note that the excluded url is configured in the filter initialization parameters.
  * @author yangwk 
  */  
 public class CsrfFilter implements Filter {  

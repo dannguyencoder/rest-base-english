@@ -14,11 +14,11 @@ import org.slf4j.LoggerFactory;
 
 public class JsUtils {
 	private static Logger logger = LoggerFactory.getLogger(JsUtils.class);
-	
+
 	/**
-	 * 获取js代码内的某个变量值
+	 * Get the value of a variable in the js code
 	 * @author yangwk
-	 * @time 2017年9月7日 下午1:57:46
+	 * @time September 7, 2017 1:57:46 PM
 	 * @param jsCode
 	 * @param property
 	 * @return

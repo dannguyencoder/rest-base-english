@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 import com.onecoderspace.base.util.Constants;
 
 /**
- * 需要标记删除的实体继承该类
+ * Entities that need to be marked for deletion inherit this class
  * @author yangwk
  */
 @MappedSuperclass

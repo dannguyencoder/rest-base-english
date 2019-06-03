@@ -3,10 +3,10 @@ package com.onecoderspace.base.util;
 public class OperationCheck {
 
 	/**
-	 * 校验数据拥有者是否是当前用户
+	 * Verify that the data owner is the current user
 	 * @author yangwk
 	 * @time 2017年7月27日 上午9:52:05
-	 * @param uid 数据拥有者ID
+	 * @param uid Data owner ID
 	 * @return
 	 */
 	public static boolean isOwnerCurrentUser(int uid){
